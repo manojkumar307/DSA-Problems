@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class StoreVisitorMilestones {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt(); long milestone=sc.nextLong();
+        int[] visits=new int[n];
+        for(int i=0;i<n;i++) visits[i]=sc.nextInt();
+        System.out.println(countMilestones(visits, milestone));
+        sc.close();
+    }
+
+//    public static int countMilestones(int[] visits, long milestone) {
+//    	int count = -1;
+//    	int sum = 0;
+//    	for (int i = 0; i < visits.length; i++) {
+//    		sum += visits[i];
+//    		count++;
+//    		if (sum >= milestone) {
+//    			break;
+//    		}
+//    	}
+//    	if (sum < milestone) {
+//    		return 0;
+//    	} else {
+//    		return visits.length - count;    		
+//    	}
+//    }
+    
+    public static int countMilestones (int[] visits, long milestone) {
+    	int count = 0;
+    	int sum = 0;
+    	
+    	for (int i = 0; i < visits.length; i++) {
+    		sum += visits[i];
+    		if (sum >= milestone) {
+    			return visits.length-i;
+    		}
+    	}
+    	return 0;
+    }
+}
