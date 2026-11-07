@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class DeliveryWalletBalance {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt(), initial=sc.nextInt();
+        int[] changes=new int[n];
+        for(int i=0;i<n;i++) changes[i]=sc.nextInt();
+        System.out.println(highestBalance(initial, changes));
+        sc.close();
+    }
+
+    public static long highestBalance(int initial, int[] changes) {
+    	int maxa = 0;
+    	int sum = initial;
+    	for (int i = 0; i < changes.length; i++) {
+    		sum = sum + changes[i];
+    		if (sum > maxa) {
+    			maxa = sum;
+    		}
+    	}
+    	
+        if (maxa <= initial) {
+        	return initial;
+        } else {
+        	return maxa; 
+        }
+//    	return maxa;
+    }
+}
