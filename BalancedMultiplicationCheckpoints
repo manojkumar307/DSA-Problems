@@ -1,0 +1,85 @@
+package from_assignment3;
+
+import java.util.Scanner;
+
+/**
+ * BalancedMultiplicationCheckpoints
+ *
+ * Counts the number of positions in an array where the
+ * product of all elements to the left of the position
+ * equals the product of all elements to the right.
+ *
+ * Example:
+ * Array: [2, 3, 6]
+ * At index 1:
+ * Left product = 2
+ * Right product = 6
+ * Not balanced.
+ */
+public class BalancedMultiplicationCheckpoints {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Read the number of elements
+        int n = sc.nextInt();
+
+        // Store input values
+        int[] values = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            values[i] = sc.nextInt();
+        }
+
+        // Print the number of balanced checkpoints
+        System.out.println(balancedCheckpoints(values));
+
+        sc.close();
+    }
+
+    /**
+     * Counts positions where:
+     * Product of elements on the left side
+     * equals
+     * Product of elements on the right side.
+     *
+     * @param values Input array
+     * @return Number of balanced checkpoints
+     */
+    public static int balancedCheckpoints(int[] values) {
+        int n = values.length;
+
+        // Empty array has no checkpoints
+        if (n == 0) {
+            return 0;
+        }
+
+        // right[i] stores the product of all elements
+        // to the right of index i
+        long[] right = new long[n];
+        right[n - 1] = 1L;
+
+        // Build suffix products from right to left
+        for (int i = n - 2; i >= 0; i--) {
+            right[i] = right[i + 1] * values[i + 1];
+        }
+
+        int count = 0;
+
+        // Running product of elements to the left
+        long left = 1L;
+
+        for (int i = 0; i < n; i++) {
+
+            // Check if left and right products match
+            if (left == right[i]) {
+                count++;
+            }
+
+            // Update left product for next iteration
+            left *= values[i];
+        }
+
+        return count;
+    }
+}
