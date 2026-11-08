@@ -1,0 +1,81 @@
+package from_assignment3;
+
+import java.util.Scanner;
+
+/**
+ * EventBudgetSplit
+ *
+ * Finds the index where the total cost on the left side
+ * equals the total cost on the right side.
+ *
+ * Returns the position of the split if it exists,
+ * otherwise returns -1.
+ */
+public class EventBudgetSplit {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Read the number of cost entries
+        int n = sc.nextInt();
+
+        // Store all costs in an array
+        int[] costs = new int[n];
+
+        // Read cost values
+        for (int i = 0; i < n; i++) {
+            costs[i] = sc.nextInt();
+        }
+
+        // Print the split position
+        System.out.println(budgetSplit(costs));
+
+        sc.close();
+    }
+
+    /**
+     * Finds a split point where:
+     * sum(left side) == sum(right side)
+     *
+     * @param costs Array containing event costs
+     * @return Split index (1-based) or -1 if no valid split exists
+     */
+    private static int budgetSplit(int[] costs) {
+        int n = costs.length;
+
+        // Need at least two elements to create a split
+        if (n < 2) {
+            return -1;
+        }
+
+        // Calculate total sum of all costs
+        long totalSum = 0;
+        int i = 0;
+
+        while (i < n) {
+            totalSum += costs[i];
+            i++;
+        }
+
+        // Running sum of the left side
+        long left = 0;
+        int splitIndex = 0;
+
+        while (splitIndex < n - 1) {
+            left += costs[splitIndex];
+
+            // Calculate right side sum
+            long rightSum = totalSum - left;
+
+            // Check if both sides are equal
+            if (left == rightSum) {
+                return splitIndex + 1;
+            }
+
+            splitIndex++;
+        }
+
+        // No valid split found
+        return -1;
+    }
+}
