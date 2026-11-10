@@ -44,6 +44,7 @@ DSA-Problems/
 | BalancedMultiplicationCheckpoints | Arrays | O(n) |
 | DeliveryWalletBalance | Arrays | O(n) |
 | StoreVisitorMilestones | Arrays | O(n) |
+| CalculateDailySalesDifference | Arrays | O(n) |
 | More Coming Soon... | - | - |
 
 ## Example Problems
@@ -59,6 +60,9 @@ finds the highest balanced reached for the day.
 
 ### StoreVisitorMilestones
 finds the cumulative customers visited the store for the each hour and has it crossed the limit set for the day.
+
+### CalculateDailySalesDifference
+finds if it profit for the day or not camaparitevly to yesterday
 
 ## Language
 
