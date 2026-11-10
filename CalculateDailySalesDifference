@@ -1,0 +1,83 @@
+package from_assignments;
+
+import java.util.Scanner;
+
+public class CalculateDailySalesDifference {
+
+	public static void main(String[] args) {
+
+		// Create Scanner object to read input from the user
+		Scanner sc = new Scanner(System.in);
+
+		// Read yesterday's sales value
+		int yesterday = sc.nextInt();
+
+		// Read today's sales value
+		int today = sc.nextInt();
+
+		// Initial approach using multiple if statements
+
+//		// Case 1: Yesterday's sales are greater than today's sales
+//		if (yesterday > today) {
+//			
+//			// Calculate the difference
+//			int diff = yesterday - today;
+//			
+//			// Display the difference
+//			System.out.println("Difference : " + diff);
+//			
+//			// Determine sales status
+//			if (today < yesterday) {
+//				System.out.println("Status: Decreased");
+//			} else {
+//				System.out.println("Status: Unchanged");
+//			}
+//		}
+//		
+//		// Case 2: Today's sales are greater than yesterday's sales
+//		if (today > yesterday) {
+//			
+//			// Calculate the difference
+//			int diff = today - yesterday;
+//			
+//			// Display the difference
+//			System.out.println("Difference : " + diff);
+//			
+//			// Determine sales status
+//			if (today > yesterday) {
+//				System.out.println("Status: Increased");
+//			} else {
+//				System.out.println("Status: Unchanged");
+//			}
+//		}
+//		
+//		// Case 3: Sales remained unchanged
+//		if (yesterday == today) {
+//			System.out.println("Difference: 0");
+//			System.out.println("Status: Unchanged");
+//		}
+
+		// Optimized approach:
+		// Math.abs() returns the absolute (positive) difference
+		int diff = Math.abs(today - yesterday);
+
+		// Display the calculated difference
+		System.out.println("Difference: " + diff);
+
+		// Check whether sales increased
+		if (today > yesterday) {
+			System.out.println("Status: Increased");
+
+		// Check whether sales decreased
+		} else if (yesterday > today) {
+			System.out.println("Status: Decreased");
+
+		// Sales values are equal
+		} else {
+			System.out.println("Status: Unchanged");
+		}
+
+		// Close Scanner to free system resources
+		sc.close();
+	}
+}
