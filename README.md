@@ -45,6 +45,7 @@ DSA-Problems/
 | DeliveryWalletBalance | Arrays | O(n) |
 | StoreVisitorMilestones | Arrays | O(n) |
 | CalculateDailySalesDifference | Arrays | O(n) |
+| Average of the class | Arrays | O(n) |
 | More Coming Soon... | - | - |
 
 ## Example Problems
@@ -63,6 +64,9 @@ finds the cumulative customers visited the store for the each hour and has it cr
 
 ### CalculateDailySalesDifference
 finds if it profit for the day or not camaparitevly to yesterday
+
+### Average of the class
+finds the students who got more more marks then the average of the class
 
 ## Language
 
